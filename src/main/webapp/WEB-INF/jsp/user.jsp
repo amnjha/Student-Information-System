@@ -234,13 +234,13 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label>Roll Number</label>
-                                                    <input name="roll" type="text" class="form-control border-input" placeholder="Roll Number" value="${roll}">
+                                                    <input name="roll" readonly="readonly" type="text" class="form-control border-input" placeholder="Roll Number" value="${roll}">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Email address</label>
-                                                    <input name="emailId" type="text" class="form-control border-input" placeholder="Email" value="${email}">
+                                                    <input name="emailId" readonly="readonly" type="text" class="form-control border-input" placeholder="Email" value="${email}">
                                                 </div>
                                             </div>
                                         </div>
