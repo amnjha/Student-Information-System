@@ -14,6 +14,7 @@ public class Student {
     private String semester;
     private String branch;
     private String section;
+    private String description;
 
     public String getName() {
         return name;
@@ -69,5 +70,13 @@ public class Student {
 
     public void setSection(String section) {
         this.section = section;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

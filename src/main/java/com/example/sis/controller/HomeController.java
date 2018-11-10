@@ -1,6 +1,7 @@
 package com.example.sis.controller;
 
 import com.example.sis.data.Student;
+import com.example.sis.repository.StudentRepository;
 import com.example.sis.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,9 +20,22 @@ public class HomeController extends MVCController {
 
     @Autowired
     private LoginService service;
+    @Autowired
+    private StudentRepository studentRepository;
 
     @RequestMapping(value="/", method = RequestMethod.GET)
-    public String showLoginPage(ModelMap model){
+    public String showLoginPage(HttpServletRequest request, ModelMap model){
+        HttpSession session = request.getSession(false);
+        if(session!=null){
+            String email = (String) session.getAttribute("email");
+            Student student = studentRepository.findByEmail(email);
+            model.put("email", email);
+            model.put("name", student.getName());
+            model.put("semester", student.getSemester());
+            model.put("roll", student.getRoll());
+            model.put("branch",student.getBranch());
+            return "dashboard";
+        }
         return "login";
     }
 
@@ -45,7 +59,41 @@ public class HomeController extends MVCController {
         model.put("name", student.getName());
         model.put("semester", student.getSemester());
         model.put("roll", student.getRoll());
+        model.put("branch",student.getBranch());
         return "dashboard";
     }
 
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    public String showProfilePage(HttpServletRequest request, ModelMap model){
+        HttpSession session = request.getSession(false);
+        if(session!=null){
+            populateModelMap(request, model);
+            return "user";
+        }
+        return "login";
+    }
+
+    @RequestMapping(value = "/marks", method = RequestMethod.GET)
+    public String showMarksPage(HttpServletRequest request, ModelMap model){
+        HttpSession session = request.getSession(false);
+        if(session!=null){
+            populateModelMap(request, model);
+            return "marks";
+        }
+        return "login";
+    }
+
+    private void populateModelMap(HttpServletRequest request, ModelMap model){
+        HttpSession session = request.getSession(false);
+        if(session!=null){
+            String email = (String) session.getAttribute("email");
+            Student student = studentRepository.findByEmail(email);
+            model.put("email", email);
+            model.put("name", student.getName());
+            model.put("semester", student.getSemester());
+            model.put("roll", student.getRoll());
+            model.put("branch",student.getBranch());
+            model.put("description", student.getDescription());
+        }
+    }
 }
