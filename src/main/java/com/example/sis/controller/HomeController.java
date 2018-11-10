@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @SessionAttributes("name")
-public class LoginController {
+public class HomeController {
 
     @Autowired
     LoginService service;
