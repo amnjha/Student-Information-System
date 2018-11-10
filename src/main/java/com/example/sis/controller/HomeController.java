@@ -83,6 +83,15 @@ public class HomeController extends MVCController {
         return "login";
     }
 
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        if(session!=null){
+            session.invalidate();
+        }
+        return "login";
+    }
+
     private void populateModelMap(HttpServletRequest request, ModelMap model){
         HttpSession session = request.getSession(false);
         if(session!=null){

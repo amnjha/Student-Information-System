@@ -100,7 +100,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
 						<li>
-                            <a href="#">
+                            <a href="/logout">
                                 <div class="icon-success">
 								    <i class="ti-control-forward"></i>
                                     <p>Logout</p>
