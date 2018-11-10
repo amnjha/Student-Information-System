@@ -1,5 +1,6 @@
 package com.example.sis.controller;
 
+import com.example.sis.data.Student;
 import com.example.sis.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +15,10 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @SessionAttributes("name")
-public class HomeController {
+public class HomeController extends MVCController {
 
     @Autowired
-    LoginService service;
+    private LoginService service;
 
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String showLoginPage(ModelMap model){
@@ -27,8 +28,8 @@ public class HomeController {
     @RequestMapping(value="/", method = RequestMethod.POST)
     public String showWelcomePage(HttpServletRequest request, ModelMap model, @RequestParam String email, @RequestParam String password){
 
-        boolean isValidUser = service.validateUser(email, password);
-
+        Student student = service.validateUser(email, password);
+        boolean isValidUser = student!=null;
 
         if (!isValidUser) {
             model.put("errorMessage", "Invalid Credentials");
@@ -41,7 +42,10 @@ public class HomeController {
         }
 
         model.put("email", email);
-        return "welcome";
+        model.put("name", student.getName());
+        model.put("semester", student.getSemester());
+        model.put("roll", student.getRoll());
+        return "dashboard";
     }
 
 }

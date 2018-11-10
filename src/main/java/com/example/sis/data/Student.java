@@ -9,10 +9,19 @@ public class Student {
     private String userName;
     private String email;
 
+    private String name;
     private String roll;
     private String semester;
     private String branch;
     private String section;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getUserName() {
         return userName;

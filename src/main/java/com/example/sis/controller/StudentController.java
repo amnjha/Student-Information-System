@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(path = "/student", produces = MediaType.APPLICATION_JSON_VALUE)
-public class StudentController {
+public class StudentController extends MVCController{
 
     @Autowired
     private StudentService studentService;
