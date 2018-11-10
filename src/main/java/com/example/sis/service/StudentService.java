@@ -15,4 +15,17 @@ public class StudentService {
         Student student = studentRepository.findByRoll(roll);
         return student;
     }
+
+    public Student findUserByEmail(String email){
+        return studentRepository.findByEmail(email);
+    }
+
+    public Student updateStudent(String email, String roll, String name, String description){
+        Student student = studentRepository.findByEmail(email);
+        student.setEmail(email);
+        student.setDescription(description);
+        student.setRoll(roll);
+        student.setName(name);
+        return studentRepository.save(student);
+    }
 }
