@@ -38,6 +38,7 @@ public class HomeController extends MVCController {
         if(session!=null){
             String email = (String) session.getAttribute("email");
             Student student = studentService.findUserByEmail(email);
+            model.put("attendance", attendanceService.getTotalAttendancePercent(email));
             model.put("email", email);
             model.put("name", student.getName());
             model.put("semester", student.getSemester());
