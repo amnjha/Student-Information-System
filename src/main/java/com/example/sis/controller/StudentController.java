@@ -2,6 +2,7 @@ package com.example.sis.controller;
 
 import com.example.sis.data.RestResponse;
 import com.example.sis.data.Student;
+import com.example.sis.service.MarksService;
 import com.example.sis.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -21,6 +22,9 @@ public class StudentController extends MVCController {
     @Autowired
     private StudentService studentService;
 
+    @Autowired
+    private MarksService marksService;
+
     @GetMapping
     public RestResponse getStudent(@RequestParam String roll) {
         Student student = studentService.findUserByRollNumber(roll);
@@ -39,5 +43,12 @@ public class StudentController extends MVCController {
         model.put("description", student.getDescription());
 
         return "user";
+    }
+
+    @GetMapping("/marks")
+    public RestResponse getMarks(HttpServletRequest request){
+        String email = (String) request.getSession(false).getAttribute("email");
+        marksService.getAllMarks(email);
+        return null;
     }
 }

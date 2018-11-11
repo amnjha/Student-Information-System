@@ -64,15 +64,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
-                        <i class="ti-text"></i>
-                        <p>Typography</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="icons.html">
+                    <a href="/attendance">
                         <i class="ti-pencil-alt2"></i>
-                        <p>Icons</p>
+                        <p>Attendance</p>
                     </a>
                 </li>
                 <li>
@@ -125,60 +119,46 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Striped Table</h4>
-                                <p class="category">Here is a subtitle for this table</p>
+                                <h4 class="title">Test 1 Marks</h4>
+                                <p class="category">1st Internals</p>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-striped">
                                     <thead>
-                                        <th>ID</th>
-                                    	<th>Name</th>
-                                    	<th>Salary</th>
-                                    	<th>Country</th>
-                                    	<th>City</th>
+                                        <th>Sl. No.</th>
+                                    	<th>Subject Name</th>
+                                    	<th>Marks</th>
                                     </thead>
                                     <tbody>
                                         <tr>
                                         	<td>1</td>
-                                        	<td>Dakota Rice</td>
-                                        	<td>$36,738</td>
-                                        	<td>Niger</td>
-                                        	<td>Oud-Turnhout</td>
+                                        	<td>${t1_subject1}</td>
+                                        	<td>${t1_subject1_marks}</td>
                                         </tr>
                                         <tr>
                                         	<td>2</td>
-                                        	<td>Minerva Hooper</td>
-                                        	<td>$23,789</td>
-                                        	<td>Curaçao</td>
-                                        	<td>Sinaai-Waas</td>
+                                            <td>${t1_subject2}</td>
+                                            <td>${t1_subject2_marks}</td>
                                         </tr>
                                         <tr>
                                         	<td>3</td>
-                                        	<td>Sage Rodriguez</td>
-                                        	<td>$56,142</td>
-                                        	<td>Netherlands</td>
-                                        	<td>Baileux</td>
+                                            <td>${t1_subject3}</td>
+                                            <td>${t1_subject3_marks}</td>
                                         </tr>
                                         <tr>
                                         	<td>4</td>
-                                        	<td>Philip Chaney</td>
-                                        	<td>$38,735</td>
-                                        	<td>Korea, South</td>
-                                        	<td>Overland Park</td>
+                                            <td>${t1_subject4}</td>
+                                            <td>${t1_subject4_marks}</td>
                                         </tr>
                                         <tr>
                                         	<td>5</td>
-                                        	<td>Doris Greene</td>
-                                        	<td>$63,542</td>
-                                        	<td>Malawi</td>
-                                        	<td>Feldkirchen in Kärnten</td>
+                                            <td>${t1_subject5}</td>
+                                            <td>${t1_subject5_marks}</td>
                                         </tr>
                                         <tr>
                                         	<td>6</td>
-                                        	<td>Mason Porter</td>
-                                        	<td>$78,615</td>
-                                        	<td>Chile</td>
-                                        	<td>Gloucester</td>
+                                            <td>${t1_subject6}</td>
+                                            <td>${t1_subject6_marks}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -189,63 +169,49 @@
 
 
                     <div class="col-md-12">
-                        <div class="card card-plain">
+                        <div class="card">
                             <div class="header">
-                                <h4 class="title">Table on Plain Background</h4>
-                                <p class="category">Here is a subtitle for this table</p>
+                                <h4 class="title">Test 2 Marks</h4>
+                                <p class="category">2nd Internals</p>
                             </div>
                             <div class="content table-responsive table-full-width">
-                                <table class="table table-hover">
+                                <table class="table table-striped">
                                     <thead>
-                                        <th>ID</th>
-                                    	<th>Name</th>
-                                    	<th>Salary</th>
-                                    	<th>Country</th>
-                                    	<th>City</th>
+                                    <th>Sl. No.</th>
+                                    <th>Subject Name</th>
+                                    <th>Marks</th>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                        	<td>1</td>
-                                        	<td>Dakota Rice</td>
-                                        	<td>$36,738</td>
-                                        	<td>Niger</td>
-                                        	<td>Oud-Turnhout</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>2</td>
-                                        	<td>Minerva Hooper</td>
-                                        	<td>$23,789</td>
-                                        	<td>Curaçao</td>
-                                        	<td>Sinaai-Waas</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>3</td>
-                                        	<td>Sage Rodriguez</td>
-                                        	<td>$56,142</td>
-                                        	<td>Netherlands</td>
-                                        	<td>Baileux</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>4</td>
-                                        	<td>Philip Chaney</td>
-                                        	<td>$38,735</td>
-                                        	<td>Korea, South</td>
-                                        	<td>Overland Park</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>5</td>
-                                        	<td>Doris Greene</td>
-                                        	<td>$63,542</td>
-                                        	<td>Malawi</td>
-                                        	<td>Feldkirchen in Kärnten</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>6</td>
-                                        	<td>Mason Porter</td>
-                                        	<td>$78,615</td>
-                                        	<td>Chile</td>
-                                        	<td>Gloucester</td>
-                                        </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>${t2_subject1}</td>
+                                        <td>${t2_subject1_marks}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>${t2_subject2}</td>
+                                        <td>${t2_subject2_marks}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>${t2_subject3}</td>
+                                        <td>${t2_subject3_marks}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>${t2_subject4}</td>
+                                        <td>${t2_subject4_marks}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>${t2_subject5}</td>
+                                        <td>${t2_subject5_marks}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>${t2_subject6}</td>
+                                        <td>${t2_subject6_marks}</td>
+                                    </tr>
                                     </tbody>
                                 </table>
 
@@ -291,6 +257,7 @@
 
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 	<script src="assets/js/paper-dashboard.js"></script>
+    <link href="assets/css/demo.css" rel="stylesheet" />
 
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
