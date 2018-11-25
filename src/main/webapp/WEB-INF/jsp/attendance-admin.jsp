@@ -154,7 +154,7 @@
 										<div class="row">
 											<div class="col-md-5">
 												<div class="form-group">
-													<label>College</label>
+													<label>Subject</label>
 													<select name="subject" class="form-control border-input">
 														<c:forEach items="${subjects}" var="item">
 															<option value="${item}" selected="selected">${item}</option>
@@ -177,6 +177,14 @@
 													</select>
 												</div>
 											</div>
+										</div>
+										<div class="row">
+											 <div class="col-md-5">
+												 <div class="form-group">
+													 <label>Date</label>
+													 <input name="date" type="date" class="form-control border-input">
+												 </div>
+											 </div>
 										</div>
 
 										<div class="text-center">

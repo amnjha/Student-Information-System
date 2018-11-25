@@ -9,9 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
@@ -25,10 +28,14 @@ public class AdminController extends  MVCController{
     private AdminService adminService;
 
     @RequestMapping(value = "/attendance-admin", method = RequestMethod.POST)
-    public String saveAttendance(HttpServletRequest request, ModelMap modelMap, String roll ,String subject, String date, String present){
+    public String saveAttendance(HttpServletRequest request, ModelMap modelMap, @RequestParam String roll , @RequestParam String subject, @RequestParam("date") String dateString, @RequestParam String present) throws ParseException {
         HttpSession session = request.getSession(false);
         if(session!=null){
-            attendanceService.saveAttendance(roll, new Date(), "y".equalsIgnoreCase(present), subject);
+            String pattern = "yyyy-MM-dd";
+            SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+            Date date = dateFormat.parse(dateString);
+
+            attendanceService.saveAttendance(roll, date, "y".equalsIgnoreCase(present), subject);
             modelMap.put("message", "Attendance Saved Successfully");
             modelMap.put("subjects", subjectService.getAllSubjects());
             Admin admin =adminService.getAdmin((String) request.getSession(false).getAttribute("email"));
