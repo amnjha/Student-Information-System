@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Student {
+public class Student extends User{
     @Id
     private String userName;
     private String email;

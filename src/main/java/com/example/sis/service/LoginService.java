@@ -1,7 +1,9 @@
 package com.example.sis.service;
 
+import com.example.sis.data.Admin;
 import com.example.sis.data.Credentials;
 import com.example.sis.data.Student;
+import com.example.sis.data.User;
 import com.example.sis.repository.CredentialRepository;
 import com.example.sis.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +18,15 @@ public class LoginService {
     @Autowired
     private StudentRepository studentRepository;
 
-    public Student validateUser(String email, String password) {
+    public User validateUser(String email, String password) {
         Credentials credentials = credentialRepository.findByUserName(email);
         boolean validation=  email.equalsIgnoreCase(credentials.getUserName()) && password.equals(credentials.getPassword());
+        Credentials.UserType userType = credentials.getUserType();
         if(validation) {
+            if(Credentials.UserType.ADMIN.equals(userType)){
+                Admin admin = new Admin();
+                return admin;
+            }
             Student student = studentRepository.findByEmail(email);
             return student;
         }

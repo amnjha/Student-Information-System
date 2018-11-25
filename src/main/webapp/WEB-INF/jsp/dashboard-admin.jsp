@@ -6,7 +6,7 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Dashboard</title>
+	<title>Admin Dashboard</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -53,19 +53,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/profile">
+                    <a href="/profile-admin">
                         <i class="ti-user"></i>
                         <p>User Profile</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/marks">
+                    <a href="/marks-admin">
                         <i class="ti-view-list-alt"></i>
                         <p>Marks</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/attendance">
+                    <a href="/attendance-admin">
                         <i class="ti-pencil-alt2"></i>
                         <p>Attendance</p>
                     </a>
@@ -128,8 +128,8 @@
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Branch</p>
-                                            ${branch}
+                                            <p>Designation</p>
+                                            ${designation}
                                         </div>
                                     </div>
                                 </div>
@@ -154,7 +154,7 @@
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Semester</p>
-                                            ${semester}
+                                            N.A.
                                         </div>
                                     </div>
                                 </div>
@@ -179,7 +179,7 @@
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Attendance</p>
-                                            ${attendance}%
+                                            0%
                                         </div>
                                     </div>
                                 </div>

@@ -7,9 +7,7 @@ import com.example.sis.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class AttendanceService {
@@ -35,7 +33,6 @@ public class AttendanceService {
 
     public Map<String, Double> getAttendancePerSubject(String email){
         Map<String, Double> result = new HashMap<>();
-        Map<String, Object> attendanceMap = new HashMap<>();
 
         Map<String, Integer> presentCount= new HashMap<>();
         Map<String, Integer> totalCount= new HashMap<>();
@@ -76,5 +73,19 @@ public class AttendanceService {
             total+=entry.getValue();
         }
         return Math.round(total*100.0D/count)/100.0;
+    }
+
+    public Attendance saveAttendance(String roll, Date date, boolean present, String subject){
+        Attendance attendance = new Attendance();
+        Student student = studentRepository.findByRoll(roll);
+
+        attendance.setPresent(present);
+        attendance.setAttendanceId(UUID.randomUUID().toString());
+        attendance.setSemester(student.getSemester());
+        attendance.setDate(date);
+        attendance.setSubject(subject);
+        attendance.setRoll(roll);
+
+        return attendanceRepository.save(attendance);
     }
 }
