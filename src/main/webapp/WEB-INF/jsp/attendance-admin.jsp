@@ -60,7 +60,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="/marks">
+					<a href="/marks-admin">
 						<i class="ti-view-list-alt"></i>
 						<p>Marks</p>
 					</a>

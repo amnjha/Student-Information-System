@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Service
 public class MarksService {
@@ -46,5 +47,19 @@ public class MarksService {
         }
 
         return markMap;
+    }
+    public Marks savemarks(String exam,String marks,String subject,String roll) {
+    	Marks mark=new Marks();
+    	 Student student = studentRepository.findByRoll(roll);
+    	 
+    	 mark.setMarksId(UUID.randomUUID().toString());
+    	 mark.setExam(exam);
+    	 mark.setMarks(marks);
+    	 mark.setSubject(subject);
+    	 mark.setUserName(student.getUserName());
+    	 
+    	 
+		return marksRepository.save(mark);
+    	
     }
 }

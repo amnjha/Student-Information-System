@@ -59,13 +59,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/marks">
+                    <a href="/marks-admin">
                         <i class="ti-view-list-alt"></i>
                         <p>Marks</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/attendance">
+                    <a href="/attendance-admin">
                         <i class="ti-pencil-alt2"></i>
                         <p>Attendance</p>
                     </a>

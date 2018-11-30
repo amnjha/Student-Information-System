@@ -73,7 +73,7 @@
                 <li>
                     <a href="maps.html">
                         <i class="ti-map"></i>
-                        <p>Maps</p>
+                        <p>time Table</p>
                     </a>
                 </li>
                 <li>
@@ -223,16 +223,16 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Users Behavior</h4>
-                                <p class="category">24 Hours performance</p>
+                                <h4 class="title">Student performance</h4>
+                                <p class="category">1 day data</p>
                             </div>
                             <div class="content">
                                 <div id="chartHours" class="ct-chart"></div>
                                 <div class="footer">
                                     <div class="chart-legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Click
-                                        <i class="fa fa-circle text-warning"></i> Click Second Time
+                                        <i class="fa fa-circle text-info"></i> number of students
+                                        <!--  <i class="fa fa-circle text-danger"></i> Click -->
+<!--                                         <i class="fa fa-circle text-warning"></i> Click Second Time -->
                                     </div>
                                     <hr>
                                     <div class="stats">
@@ -269,16 +269,16 @@
                     <div class="col-md-6">
                         <div class="card ">
                             <div class="header">
-                                <h4 class="title">2015 Sales</h4>
-                                <p class="category">All products including Taxes</p>
+                                <h4 class="title">Statistics</h4>
+                                <p class="category">Details</p>
                             </div>
                             <div class="content">
                                 <div id="chartActivity" class="ct-chart"></div>
 
                                 <div class="footer">
                                     <div class="chart-legend">
-                                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                                        <i class="fa fa-circle text-warning"></i> BMW 5 Series
+                                        <i class="fa fa-circle text-info"></i> Avg Performance of class
+                                        <i class="fa fa-circle text-warning"></i> Students performance
                                     </div>
                                     <hr>
                                     <div class="stats">

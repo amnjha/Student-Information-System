@@ -3,6 +3,7 @@ package com.example.sis.controller;
 import com.example.sis.data.Admin;
 import com.example.sis.service.AdminService;
 import com.example.sis.service.AttendanceService;
+import com.example.sis.service.MarksService;
 import com.example.sis.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,8 @@ public class AdminController extends  MVCController{
     private SubjectService subjectService;
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private MarksService marksService;
 
     @RequestMapping(value = "/attendance-admin", method = RequestMethod.POST)
     public String saveAttendance(HttpServletRequest request, ModelMap modelMap, @RequestParam String roll , @RequestParam String subject, @RequestParam("date") String dateString, @RequestParam String present) throws ParseException {
@@ -55,6 +58,31 @@ public class AdminController extends  MVCController{
         modelMap.remove("message");
         return "attendance-admin";
     }
-
+   @RequestMapping(value="/marks-admin",method=RequestMethod.POST)
+   public String saveMarks(HttpServletRequest request,ModelMap modelMap,@RequestParam String exam,@RequestParam String marks,@RequestParam String subject,@RequestParam String roll)throws ParseException{
+	HttpSession session=request.getSession();
+	if(session!=null) {
+		marksService.savemarks(exam, marks, subject, roll);
+		modelMap.put("message", "marks saved successfully");
+		modelMap.put("subjects", subjectService.getAllSubjects());
+		Admin admin=adminService.getAdmin((String)request.getSession(false).getAttribute("email"));
+		modelMap.put("designation", admin.getDesignation());
+		modelMap.put("name", admin.getName());
+	}
+	
+	
+	   return "marks-admin";
+	   
+   }
+   @RequestMapping(value="/marks-admin",method=RequestMethod.GET)
+   public String showAttendancePage(HttpServletRequest request,ModelMap modelMap) {
+	   modelMap.put("subjects", subjectService.getAllSubjects());
+	   Admin admin=adminService.getAdmin((String) request.getSession(false).getAttribute("email"));
+	   modelMap.put("designation", admin.getDesignation());
+	   modelMap.put("name", admin.getName());
+	   modelMap.remove("message");
+	return "marks-admin";
+	   
+   }
 
 }
