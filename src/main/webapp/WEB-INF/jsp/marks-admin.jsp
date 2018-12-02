@@ -72,15 +72,9 @@
 					</a>
 				</li>
 				<li>
-					<a href="maps.html">
+					<a href="/add-student">
 						<i class="ti-map"></i>
-						<p>Maps</p>
-					</a>
-				</li>
-				<li>
-					<a href="notifications.html">
-						<i class="ti-bell"></i>
-						<p>Notifications</p>
+						<p>Add Student</p>
 					</a>
 				</li>
 			</ul>
@@ -171,16 +165,18 @@
 											<div class="col-md-4">
 												<div class="form-group">
 													<label>Marks</label>
-													
-														<input name="marks" type="text" class="form-control border-input" placeholder="Marks">
+													<input name="mark" type="text" class="form-control border-input">
 												</div>
 											</div>
 										</div>
 										<div class="row">
 											 <div class="col-md-5">
 												 <div class="form-group">
-													 <label>Exam</label>
-													 <input name="Internal" type="text" class="form-control border-input">
+													 <label>Internal</label>
+													 <select name="internal" class="form-control border-input">
+														 <option value="1">1st</option>
+														 <option value="2">2nd</option>
+													 </select>
 												 </div>
 											 </div>
 										</div>

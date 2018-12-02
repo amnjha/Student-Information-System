@@ -65,13 +65,13 @@
 						<p>Marks</p>
 					</a>
 				</li>
-				<li class="active">
+				<li>
 					<a href="/attendance-admin">
 						<i class="ti-pencil-alt2"></i>
 						<p>Attendance</p>
 					</a>
 				</li>
-				<li>
+				<li class="active">
 					<a href="/add-student">
 						<i class="ti-map"></i>
 						<p>Add Student</p>
@@ -137,23 +137,19 @@
 							</div>
 						</div>
 					</div>
-					<form action="/attendance-admin" method="post">
+					<form action="/add-student" method="post">
 						<div class="col-lg-8 col-md-7">
 							<div class="card">
 								<div class="header">
-									<h4 class="title">Enter Attendance</h4>
+									<h4 class="title">Add Student</h4>
 								</div>
 								<div class="content">
 									<form>
-										<div class="row">
+										<div class="row" id="row-1">
 											<div class="col-md-5">
 												<div class="form-group">
-													<label>Subject</label>
-													<select name="subject" class="form-control border-input">
-														<c:forEach items="${subjects}" var="item">
-															<option value="${item}" selected="selected">${item}</option>
-														</c:forEach>
-													</select>
+													<label>Name</label>
+													<input name="name" type="text" class="form-control border-input" placeholder="Student Name">
 												</div>
 											</div>
 											<div class="col-md-3">
@@ -164,25 +160,54 @@
 											</div>
 											<div class="col-md-4">
 												<div class="form-group">
-													<label>Present</label>
-													<select name="present" class="form-control border-input">
-														<option value="y" selected="selected">Yes</option>
-														<option value="n">No</option>
+													<label>E-mail</label>
+													<input name="email" type="email" class="form-control border-input" placeholder="Student Email">
+												</div>
+											</div>
+										</div>
+										<div class="row" id="row-2">
+											<div class="col-md-5">
+												<div class="form-group">
+													<label>Semester</label>
+													<select name="semester" class="form-control border-input">
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+														<option value="6">6</option>
+														<option value="7">7</option>
+														<option value="8">8</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Branch</label>
+													<select name="branch" class="form-control border-input">
+														<option value="CSE">CSE</option>
+														<option value="ISE">ISE</option>
+														<option value="ECE">ECE</option>
+														<option value="MECH">MECH</option>
+														<option value="CIVIL">CIVIL</option>
+														<option value="EEE">EEE</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group">
+													<label>Section</label>
+													<select name="section" class="form-control border-input">
+														<option value="A">A</option>
+														<option value="B">B</option>
+														<option value="C">C</option>
 													</select>
 												</div>
 											</div>
 										</div>
-										<div class="row">
-											 <div class="col-md-5">
-												 <div class="form-group">
-													 <label>Date</label>
-													 <input name="date" type="date" class="form-control border-input">
-												 </div>
-											 </div>
-										</div>
 
 										<div class="text-center">
-											<button type="submit" class="btn btn-info btn-fill btn-wd">Save Attendance</button>
+											<button type="submit" class="btn btn-info btn-fill btn-wd">Save Student</button>
 										</div>
 										<div class="clearfix"></div>
 									</form>

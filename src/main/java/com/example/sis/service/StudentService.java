@@ -26,4 +26,17 @@ public class StudentService {
         student.setName(name);
         return studentRepository.save(student);
     }
+
+    public Student saveStudent(String email, String name, String roll, String branch, String semester, String section){
+        Student student = new Student();
+        student.setUserName(email);
+        student.setName(name);
+        student.setEmail(email);
+        student.setRoll(roll);
+        student.setBranch(branch);
+        student.setSection(section);
+        student.setSemester(semester);
+
+        return studentRepository.save(student);
+    }
 }

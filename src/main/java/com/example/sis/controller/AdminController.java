@@ -1,10 +1,7 @@
 package com.example.sis.controller;
 
 import com.example.sis.data.Admin;
-import com.example.sis.service.AdminService;
-import com.example.sis.service.AttendanceService;
-import com.example.sis.service.MarksService;
-import com.example.sis.service.SubjectService;
+import com.example.sis.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,7 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
-public class AdminController extends  MVCController{
+public class AdminController extends MVCController {
 
     @Autowired
     private AttendanceService attendanceService;
@@ -29,11 +26,13 @@ public class AdminController extends  MVCController{
     private AdminService adminService;
     @Autowired
     private MarksService marksService;
+    @Autowired
+    private StudentService studentService;
 
     @RequestMapping(value = "/attendance-admin", method = RequestMethod.POST)
-    public String saveAttendance(HttpServletRequest request, ModelMap modelMap, @RequestParam String roll , @RequestParam String subject, @RequestParam("date") String dateString, @RequestParam String present) throws ParseException {
+    public String saveAttendance(HttpServletRequest request, ModelMap modelMap, @RequestParam String roll, @RequestParam String subject, @RequestParam("date") String dateString, @RequestParam String present) throws ParseException {
         HttpSession session = request.getSession(false);
-        if(session!=null){
+        if (session != null) {
             String pattern = "yyyy-MM-dd";
             SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
             Date date = dateFormat.parse(dateString);
@@ -41,48 +40,72 @@ public class AdminController extends  MVCController{
             attendanceService.saveAttendance(roll, date, "y".equalsIgnoreCase(present), subject);
             modelMap.put("message", "Attendance Saved Successfully");
             modelMap.put("subjects", subjectService.getAllSubjects());
-            Admin admin =adminService.getAdmin((String) request.getSession(false).getAttribute("email"));
-            modelMap.put("designation",admin.getDesignation());
-            modelMap.put("name", admin.getName());
+            String adminEmail = (String) request.getSession(false).getAttribute("email");
+            addAdminToModel(modelMap, adminEmail);
         }
         return "attendance-admin";
     }
 
     @RequestMapping(value = "/attendance-admin", method = RequestMethod.GET)
-    public String showAdminAttendancePage(HttpServletRequest request, ModelMap modelMap){
+    public String showAdminAttendancePage(HttpServletRequest request, ModelMap modelMap) {
         modelMap.put("subjects", subjectService.getAllSubjects());
 
-        Admin admin =adminService.getAdmin((String) request.getSession(false).getAttribute("email"));
-        modelMap.put("designation",admin.getDesignation());
-        modelMap.put("name", admin.getName());
+        String adminEmail = (String) request.getSession(false).getAttribute("email");
+        addAdminToModel(modelMap, adminEmail);
         modelMap.remove("message");
         return "attendance-admin";
     }
-   @RequestMapping(value="/marks-admin",method=RequestMethod.POST)
-   public String saveMarks(HttpServletRequest request,ModelMap modelMap,@RequestParam String exam,@RequestParam String marks,@RequestParam String subject,@RequestParam String roll)throws ParseException{
-	HttpSession session=request.getSession();
-	if(session!=null) {
-		marksService.savemarks(exam, marks, subject, roll);
-		modelMap.put("message", "marks saved successfully");
-		modelMap.put("subjects", subjectService.getAllSubjects());
-		Admin admin=adminService.getAdmin((String)request.getSession(false).getAttribute("email"));
-		modelMap.put("designation", admin.getDesignation());
-		modelMap.put("name", admin.getName());
-	}
-	
-	
-	   return "marks-admin";
-	   
-   }
-   @RequestMapping(value="/marks-admin",method=RequestMethod.GET)
-   public String showAttendancePage(HttpServletRequest request,ModelMap modelMap) {
-	   modelMap.put("subjects", subjectService.getAllSubjects());
-	   Admin admin=adminService.getAdmin((String) request.getSession(false).getAttribute("email"));
-	   modelMap.put("designation", admin.getDesignation());
-	   modelMap.put("name", admin.getName());
-	   modelMap.remove("message");
-	return "marks-admin";
-	   
-   }
+
+    @RequestMapping(value = "/marks-admin", method = RequestMethod.POST)
+    public String saveMarks(HttpServletRequest request, ModelMap modelMap, @RequestParam String internal, @RequestParam String mark, @RequestParam String subject, @RequestParam String roll) throws ParseException {
+        HttpSession session = request.getSession();
+        if (session != null) {
+            marksService.savemarks(internal, mark, subject, roll);
+            modelMap.put("message", "Marks Saved Successfully");
+            modelMap.put("subjects", subjectService.getAllSubjects());
+            String adminEmail = (String) request.getSession(false).getAttribute("email");
+            addAdminToModel(modelMap, adminEmail);
+        }
+
+
+        return "marks-admin";
+
+    }
+
+    @RequestMapping(value = "/marks-admin", method = RequestMethod.GET)
+    public String showMarksAdminPage(HttpServletRequest request, ModelMap modelMap) {
+        modelMap.put("subjects", subjectService.getAllSubjects());
+        String adminEmail = (String) request.getSession(false).getAttribute("email");
+        addAdminToModel(modelMap, adminEmail);
+        modelMap.remove("message");
+        return "marks-admin";
+    }
+
+    @RequestMapping(value = "/add-student", method = RequestMethod.POST)
+    public String saveStudent(HttpServletRequest request, ModelMap modelMap, String email, String roll, String name, String branch, String section, String semester) throws ParseException {
+        HttpSession session = request.getSession();
+        if (session != null) {
+            studentService.saveStudent(email,name,roll,branch,semester,section);
+            modelMap.put("message", "Student Saved Successfully");
+            String adminEmail = (String) request.getSession(false).getAttribute("email");
+            addAdminToModel(modelMap, adminEmail);
+        }
+        return "add-student";
+
+    }
+
+    @RequestMapping(value = "/add-student", method = RequestMethod.GET)
+    public String showAddStudentPage(HttpServletRequest request, ModelMap modelMap) {
+        String email = (String) request.getSession(false).getAttribute("email");
+        addAdminToModel(modelMap, email);
+        modelMap.remove("message");
+        return "add-student";
+    }
+
+    private void addAdminToModel(ModelMap modelMap, String email){
+        Admin admin = adminService.getAdmin(email);
+        modelMap.put("designation", admin.getDesignation());
+        modelMap.put("name", admin.getName());
+    }
 
 }
