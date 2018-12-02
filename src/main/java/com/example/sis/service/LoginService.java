@@ -20,9 +20,9 @@ public class LoginService {
 
     public User validateUser(String email, String password) {
         Credentials credentials = credentialRepository.findByUserName(email);
-        boolean validation=  email.equalsIgnoreCase(credentials.getUserName()) && password.equals(credentials.getPassword());
-        Credentials.UserType userType = credentials.getUserType();
+        boolean validation=  credentials!=null && email.equalsIgnoreCase(credentials.getUserName()) && password.equals(credentials.getPassword());
         if(validation) {
+            Credentials.UserType userType = credentials.getUserType();
             if(Credentials.UserType.ADMIN.equals(userType)){
                 Admin admin = new Admin();
                 return admin;
