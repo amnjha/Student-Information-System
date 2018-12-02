@@ -1,6 +1,8 @@
 package com.example.sis.service;
 
+import com.example.sis.data.Credentials;
 import com.example.sis.data.Student;
+import com.example.sis.repository.CredentialRepository;
 import com.example.sis.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +12,8 @@ public class StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
+    @Autowired
+    private CredentialRepository credentialRepository;
 
     public Student findUserByRollNumber(String roll){
         Student student = studentRepository.findByRoll(roll);
@@ -36,6 +40,12 @@ public class StudentService {
         student.setBranch(branch);
         student.setSection(section);
         student.setSemester(semester);
+
+        Credentials credentials = new Credentials();
+        credentials.setPassword("xyz");
+        credentials.setUserName(email);
+        credentials.setUserType(Credentials.UserType.STUDENT);
+        credentialRepository.save(credentials);
 
         return studentRepository.save(student);
     }
