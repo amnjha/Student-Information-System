@@ -176,7 +176,8 @@ public class HomeController extends MVCController {
                 return false;
             model.put("email", email);
             model.put("name", admin.getName());
-            model.put("semester", admin.getDesignation());
+            model.put("designation", admin.getDesignation());
+            model.put("description", admin.getDescription());
         }
         return true;
     }
