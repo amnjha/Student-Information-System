@@ -9,8 +9,9 @@ public abstract class MVCController {
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
-    public RestResponse handleException(Exception e){
+    public String handleException(Exception e){
         RestResponse restResponse = RestResponse.buildRestResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), null, e.getMessage());
-        return  restResponse;
+        e.printStackTrace();
+        return "login";
     }
 }

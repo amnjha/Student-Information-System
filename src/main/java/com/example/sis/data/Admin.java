@@ -11,6 +11,7 @@ public class Admin extends User{
 
     private String name;
     private String email;
+    private String description;
 
     public String getAdminId() {
         return adminId;
@@ -42,5 +43,13 @@ public class Admin extends User{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

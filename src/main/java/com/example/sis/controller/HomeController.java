@@ -52,9 +52,11 @@ public class HomeController extends MVCController {
             }
             else{
                 Admin admin = adminService.getAdmin(email);
-                model.put("name", admin.getName());
-                model.put("designation",admin.getDesignation());
-                return "dashboard-admin";
+                if(admin!=null) {
+                    model.put("name", admin.getName());
+                    model.put("designation", admin.getDesignation());
+                    return "dashboard-admin";
+                }
             }
         }
         return "login";
