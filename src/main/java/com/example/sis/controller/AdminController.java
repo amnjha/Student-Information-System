@@ -1,10 +1,12 @@
 package com.example.sis.controller;
 
 import com.example.sis.data.Admin;
+import com.example.sis.data.Student;
 import com.example.sis.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +31,18 @@ public class AdminController extends MVCController {
     private MarksService marksService;
     @Autowired
     private StudentService studentService;
+
+    @PostMapping
+    public String updateProfile(ModelMap model, String emailId, String name, String description) {
+        Admin admin = adminService.updateProfile(emailId, name, description);
+
+        model.put("email", emailId);
+        model.put("name", admin.getName());
+        model.put("designation", admin.getDesignation());
+        model.put("description", admin.getDescription());
+
+        return "user-admin";
+    }
 
     @RequestMapping(value = "/attendance-admin", method = RequestMethod.POST)
     public String saveAttendance(HttpServletRequest request, ModelMap modelMap, @RequestParam String roll, @RequestParam String subject, @RequestParam("date") String dateString, @RequestParam String present) throws ParseException {

@@ -125,24 +125,30 @@
                                     <div class="author">
                                       <img class="avatar border-white" src="assets/img/faces/face-1.jpg" alt="..."/>
                                       <h4 class="title">${name}<br />
-                                         <a href="#"><small>@user</small></a>
+                                         <a href="#"><small>@admin</small></a>
                                       </h4>
                                     </div>
                                     <p class="description text-center">
+<<<<<<< HEAD
                                         'Teacher' <br>
+||||||| merged common ancestors
+                                        'Engineering Student' <br>
+=======
+                                        'Admin User' <br>
+>>>>>>> Fix Application Errors
                                     </p>
                                 </div>
                                 <hr>
                                 <div class="text-center">
                                     <div class="row">
                                         <div class="col-md-3 col-md-offset-1">
-                                            <h5>${semester}<br /><small>Semester</small></h5>
+                                            <h5>${designation}<br /><small>Designation</small></h5>
                                         </div>
                                         <div class="col-md-4">
-                                            <h5>${branch}<br /><small>Branch</small></h5>
+                                            <h5>N.A.<br /><small>Branch</small></h5>
                                         </div>
                                         <div class="col-md-3">
-                                            <h5>${roll}<br /><small>Roll</small></h5>
+                                            <h5>N.A.<br /><small>Roll</small></h5>
                                         </div>
                                     </div>
                                 </div>
@@ -211,7 +217,13 @@
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
                         <form action="/" method="post">
+||||||| merged common ancestors
+                        <form action="/student" method="post">
+=======
+                        <form action="/admin" method="post">
+>>>>>>> Fix Application Errors
                         <div class="col-lg-8 col-md-7">
                             <div class="card">
                                 <div class="header">
@@ -228,8 +240,8 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label>Roll Number</label>
-                                                    <input name="roll" readonly="readonly" type="text" class="form-control border-input" placeholder="Roll Number" value="${roll}">
+                                                    <label>Designation</label>
+                                                    <input name="designation" readonly="readonly" type="text" class="form-control border-input" placeholder="Designation" value="${designation}">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">

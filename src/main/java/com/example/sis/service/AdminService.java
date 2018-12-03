@@ -13,4 +13,11 @@ public class AdminService {
     public Admin getAdmin(String email){
         return adminRepository.findByEmail(email);
     }
+
+    public Admin updateProfile(String email, String name, String description){
+        Admin admin = adminRepository.findByEmail(email);
+        admin.setName(name);
+        admin.setDescription(description);
+        return adminRepository.save(admin);
+    }
 }
