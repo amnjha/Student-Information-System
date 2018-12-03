@@ -204,7 +204,7 @@
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Fees Paid</p>
-                                            $1,345
+                                            Rs.170000
                                         </div>
                                     </div>
                                 </div>
@@ -257,6 +257,7 @@
                                     <div class="chart-legend">
                                         <i class="fa fa-circle text-info"></i> Present
                                         <i class="fa fa-circle text-danger"></i> Absent
+                                        <i class="fa fa-circle text-info"></i> mass_bunk
                                     </div>
                                     <hr>
                                     <div class="stats">

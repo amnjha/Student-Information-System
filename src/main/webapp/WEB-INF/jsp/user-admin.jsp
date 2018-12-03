@@ -129,7 +129,7 @@
                                       </h4>
                                     </div>
                                     <p class="description text-center">
-                                        'Engineering Student' <br>
+                                        'Teacher' <br>
                                     </p>
                                 </div>
                                 <hr>
@@ -211,7 +211,7 @@
                                 </div>
                             </div>
                         </div>
-                        <form action="/student" method="post">
+                        <form action="/" method="post">
                         <div class="col-lg-8 col-md-7">
                             <div class="card">
                                 <div class="header">

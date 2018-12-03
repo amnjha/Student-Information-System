@@ -198,7 +198,7 @@
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Fees Paid</p>
-                                            $1,345
+                                            NA
                                         </div>
                                     </div>
                                 </div>
