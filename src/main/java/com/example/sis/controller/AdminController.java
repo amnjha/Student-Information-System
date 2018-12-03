@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.constraints.Null;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,9 +37,19 @@ public class AdminController extends MVCController {
             String pattern = "yyyy-MM-dd";
             SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
             Date date = dateFormat.parse(dateString);
-
-            attendanceService.saveAttendance(roll, date, "y".equalsIgnoreCase(present), subject);
-            modelMap.put("message", "Attendance Saved Successfully");
+            Date currentDate = new Date();
+            if(date.getTime()>currentDate.getTime()){
+                modelMap.put("message", "Date Cannot be in future");
+            }else {
+                try {
+                    attendanceService.saveAttendance(roll, date, "y".equalsIgnoreCase(present), subject);
+                    modelMap.put("message", "Attendance Saved Successfully");
+                } catch (NullPointerException e) {
+                    modelMap.put("message", "Incorrect roll number, Please try again!");
+                } catch (Exception e) {
+                    modelMap.put("message", "Error Occurred While Saving Student Attendance");
+                }
+            }
             modelMap.put("subjects", subjectService.getAllSubjects());
             String adminEmail = (String) request.getSession(false).getAttribute("email");
             addAdminToModel(modelMap, adminEmail);
@@ -60,8 +71,15 @@ public class AdminController extends MVCController {
     public String saveMarks(HttpServletRequest request, ModelMap modelMap, @RequestParam String internal, @RequestParam String mark, @RequestParam String subject, @RequestParam String roll) throws ParseException {
         HttpSession session = request.getSession();
         if (session != null) {
-            marksService.savemarks(internal, mark, subject, roll);
-            modelMap.put("message", "Marks Saved Successfully");
+            try {
+                marksService.savemarks(internal, mark, subject, roll);
+                modelMap.put("message", "Marks Saved Successfully");
+                modelMap.put("message", "Marks Saved Successfully");
+            }catch (NullPointerException e){
+                modelMap.put("message", "Incorrect roll number, Please try again!");
+            }catch (Exception e){
+                modelMap.put("message", "Error Occurred While Saving Student Marks");
+            }
             modelMap.put("subjects", subjectService.getAllSubjects());
             String adminEmail = (String) request.getSession(false).getAttribute("email");
             addAdminToModel(modelMap, adminEmail);
@@ -85,8 +103,12 @@ public class AdminController extends MVCController {
     public String saveStudent(HttpServletRequest request, ModelMap modelMap, String email, String roll, String name, String branch, String section, String semester) throws ParseException {
         HttpSession session = request.getSession();
         if (session != null) {
-            studentService.saveStudent(email,name,roll,branch,semester,section);
-            modelMap.put("message", "Student Saved Successfully");
+            try{
+                studentService.saveStudent(email,name,roll,branch,semester,section);
+                modelMap.put("message", "Student Saved Successfully");
+            }catch (Exception e){
+                modelMap.put("message", "Error Occurred While Saving Student Details");
+            }
             String adminEmail = (String) request.getSession(false).getAttribute("email");
             addAdminToModel(modelMap, adminEmail);
         }
