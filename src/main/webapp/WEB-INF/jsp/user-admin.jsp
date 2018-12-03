@@ -216,7 +216,7 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label>Roll Number</label>
+                                                    <label>Designation</label>
                                                     <input name="designation" readonly="readonly" type="text" class="form-control border-input" placeholder="Designation" value="${designation}">
                                                 </div>
                                             </div>
