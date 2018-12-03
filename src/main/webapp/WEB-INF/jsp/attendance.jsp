@@ -69,18 +69,6 @@
 						<p>Attendance</p>
 					</a>
 				</li>
-				<li>
-					<a href="maps.html">
-						<i class="ti-map"></i>
-						<p>Maps</p>
-					</a>
-				</li>
-				<li>
-					<a href="notifications.html">
-						<i class="ti-bell"></i>
-						<p>Notifications</p>
-					</a>
-				</li>
 			</ul>
 		</div>
 	</div>
