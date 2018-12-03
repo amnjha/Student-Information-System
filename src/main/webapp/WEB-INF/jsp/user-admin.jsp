@@ -70,6 +70,12 @@
                         <p>Attendance</p>
                     </a>
                 </li>
+                <li>
+                    <a href="/add-student">
+                        <i class="ti-map"></i>
+                        <p>Add Student</p>
+                    </a>
+                </li>
             </ul>
     	</div>
     </div>
